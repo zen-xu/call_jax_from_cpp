@@ -11,10 +11,21 @@ beforehand. Once the executable exists, this can be achieved by running `bazel r
 # Setting up the Python environment
 
 Run the following commands:
-1. `python3 -m venv .venv`
-2. `source .venv/bin/activate`
-3. `pip install -e .`
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+# Generate compile_commands.json
+
+```bash
+bazel run @hedron_compile_commands//:refresh_all
+```
 
 # Generating the HLO and serialized files
 
-`python3 call_jax_from_cpp/simple_jax_example.py`
+```bash
+python3 python/simple_jax_example.py
+```
