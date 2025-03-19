@@ -3,7 +3,6 @@ workspace(name = "call_compiled_jax_from_cpp")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # Load XLA.
-
 http_archive(
     name = "xla",
     urls = ["https://github.com/openxla/xla/archive/refs/heads/main.zip"],
@@ -49,3 +48,9 @@ xla_workspace1()
 
 load("@xla//:workspace0.bzl", "xla_workspace0")
 xla_workspace0()
+
+load(
+    "@xla//third_party/gpus/cuda/hermetic:cuda_configure.bzl",
+    "cuda_configure",
+)
+cuda_configure(name = "local_config_cuda")

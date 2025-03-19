@@ -31,8 +31,9 @@ int main(int argc, char** argv) {
 
     for(int i = 0; i < 1000; i++) {
         literal_x = xla::LiteralUtil::CreateR2<float>({{0.1f * (float)i}});
+        auto memory_space = client->memory_spaces().front();
         param_x = client->BufferFromHostLiteral(
-            literal_x, client->addressable_devices()[0]
+            literal_x, memory_space
         ).value();
 
         results = executable->Execute({{param_x.get()}}, execute_options).value();

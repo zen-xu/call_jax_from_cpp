@@ -1,6 +1,7 @@
 bazel-*
 compile_commands.json
-MODULE.bazel
-MODULE.bazel.lock
 .venv
 *.egg-info
+*.binpb
+*.bc
+hlo/example1.txt

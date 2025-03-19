@@ -26,8 +26,10 @@ def main():
     exported = export.export(jit_f)(dummy)
 
     # These are intended as debug-only serializations. Not portable!
-    hlo = lowered.compiler_ir("hlo").as_hlo_text()
-    serialized_hlo_proto = lowered.compiler_ir("hlo").as_serialized_hlo_module_proto()
+    hlo_dialect = lowered.compiler_ir("hlo")
+    assert hlo_dialect is not None
+    hlo = hlo_dialect.as_hlo_text()
+    serialized_hlo_proto = hlo_dialect.as_serialized_hlo_module_proto()
     stable_hlo = str(lowered.compiler_ir("stablehlo"))
 
     # This is portable.

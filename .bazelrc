@@ -1,2 +1,3 @@
 common --experimental_repo_remote_exec
-build --action_env=BAZEL_CXXOPTS="-std=c++17"
+build --cxxopt=-std=c++17
+build --host_cxxopt=-std=c++17
